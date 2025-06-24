@@ -18,7 +18,7 @@ export default defineNuxtConfig({
   },
   appConfig: {
     titleSuffix: process.env.STORENAME || 'PlentyONE Shop',
-    fallbackCurrency: 'GBP',
+    fallbackCurrency: 'EUR',
   },
   imports: {
     dirs: ['composables', 'composables/**', 'utils/**'],
@@ -75,16 +75,16 @@ export default defineNuxtConfig({
       headerLogo:
         process.env.LOGO ||
         process.env.NUXT_PUBLIC_HEADER_LOGO ||
-        'https://cdn02.plentymarkets.com/mevofvd5omld/frontend/Logo/logo.svg',
+        'https://cdn02.plentymarkets.com/xetuu6ddej5k/frontend/birozym/birozymLogo.png',
       homepageCategoryId: Number(process.env.HOMEPAGE) ?? null,
       shippingTextCategoryId: Number(process.env.SHIPPINGTEXT) ?? null,
       storename: process.env.STORENAME || 'PlentyONE GmbH',
       noCache: process.env.NO_CACHE || '',
       configId: process.env.CONFIG_ID || '',
       isHero: true,
-      font: process.env.NUXT_PUBLIC_FONT || 'Red Hat Text',
+      font: process.env.NUXT_PUBLIC_FONT || 'Gantari',
       blockSize: process.env.NUXT_PUBLIC_BLOCK_SIZE || 'm',
-      primaryColor: process.env.NUXT_PUBLIC_PRIMARY_COLOR || '#062633',
+      primaryColor: process.env.NUXT_PUBLIC_PRIMARY_COLOR || '#004e48',
       secondaryColor: process.env.NUXT_PUBLIC_SECONDARY_COLOR || '#31687d',
       headerBackgroundColor:
         process.env.NUXT_PUBLIC_HEADER_BACKGROUND_COLOR || process.env.NUXT_PUBLIC_PRIMARY_COLOR || '#062633',

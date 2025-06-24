@@ -91,3 +91,48 @@ apple-pay-button {
     vertical-align: middle;
   }
 }
+
+/* Custom Styles */
+
+@font-face {
+  font-family: 'Gantari';
+  src: url('https://cdn02.plentymarkets.com/xetuu6ddej5k/frontend/birozym/fonts/Gantari-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gantari';
+  src: url('https://cdn02.plentymarkets.com/xetuu6ddej5k/frontend/birozym/fonts/Gantari-SemiBold.ttf')
+    format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gantari';
+  src: url('https://cdn02.plentymarkets.com/xetuu6ddej5k/frontend/birozym/fonts/Gantari-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Gantari', sans-serif !important;
+  background-color: #f7f7fb;
+}
+
+header {
+  .navbar-top {
+    background-color: #edeef6;
+  }
+}
+
+footer {
+  background-color: #e4f0e4;
+  .check {
+    color: #47bb5a;
+  }
+}
+// .sub-footer {
+//   background-color: #004e48;
+// }

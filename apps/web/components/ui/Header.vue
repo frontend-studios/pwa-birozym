@@ -1,81 +1,12 @@
 <template>
   <MegaMenu :categories="categoryTree">
     <template v-if="viewport.isGreaterOrEquals('md')">
-      <UiSearch class="hidden md:block flex-1" />
+      <ul class="flex flex-row">
+        <li class="mr-3"><a class="font-semibold" href="">Shop</a></li>
+        <li class="mr-3"><a class="font-semibold" href="">Über uns</a></li>
+        <li class=""><a class="font-semibold" href="">Wissen</a></li>
+      </ul>
       <nav class="hidden ml-4 md:flex md:flex-row md:flex-nowrap">
-        <template v-if="localeCodes.length > 1">
-          <UiButton
-            v-if="!isLanguageSelectOpen"
-            class="group relative hover:!bg-header-400 active:!bg-header-400 mr-1 -ml-0.5 rounded-md cursor-pointer"
-            :aria-label="t('languageSelector')"
-            variant="tertiary"
-            :style="{ color: iconColor }"
-            square
-            data-testid="open-languageselect-button"
-            :disabled="(showConfigurationDrawer && isEditing) || (showConfigurationDrawer && disableActions)"
-            @click="toggleLanguageSelect()"
-          >
-            <template #prefix>
-              <SfIconLanguage class="relative" />
-            </template>
-          </UiButton>
-          <UiButton
-            v-else
-            class="group relative hover:!bg-header-400 active:bg-header-400 mr-1 -ml-0.5 rounded-md cursor-pointer"
-            :aria-label="t('languageSelector')"
-            :style="{ color: isActive ? iconColor : '' }"
-            variant="tertiary"
-            square
-            data-testid="open-languageselect-button"
-          >
-            <template #prefix>
-              <SfIconLanguage class="relative" />
-            </template>
-          </UiButton>
-        </template>
-        <UiButton
-          class="group relative hover:!bg-header-400 active:bg-header-400 mr-1 -ml-0.5 rounded-md"
-          :tag="NuxtLink"
-          :to="localePath(paths.wishlist)"
-          :style="{ color: iconColor }"
-          :aria-label="t('numberInWishlist', { count: wishlistItemIds.length })"
-          variant="tertiary"
-          square
-          data-testid="wishlist-page-navigation"
-        >
-          <template #prefix>
-            <SfIconFavorite />
-            <SfBadge
-              :content="wishlistItemIds.length"
-              :style="{ backgroundColor: iconColor, outlineColor: headerBackgroundColor, color: headerBackgroundColor }"
-              class="outline group-hover:outline-primary-800 group-active:outline-primary-700 flex justify-center items-center text-xs min-w-[16px] min-h-[16px]"
-              data-testid="wishlist-badge"
-              placement="top-right"
-              :max="99"
-            />
-          </template>
-        </UiButton>
-        <UiButton
-          class="group relative hover:!bg-header-400 active:!bg-header-400 mr-1 -ml-0.5 rounded-md"
-          :tag="NuxtLink"
-          :style="{ color: iconColor }"
-          :to="localePath(paths.cart)"
-          :aria-label="t('numberInCart', { count: cartItemsCount })"
-          variant="tertiary"
-          square
-        >
-          <template #prefix>
-            <SfIconShoppingCart />
-            <SfBadge
-              :content="cartItemsCount"
-              :style="{ backgroundColor: iconColor, outlineColor: headerBackgroundColor, color: headerBackgroundColor }"
-              class="outline group-hover:outline-primary-800 group-active:outline-primary-700 flex justify-center items-center text-xs min-w-[16px] min-h-[16px]"
-              data-testid="cart-badge"
-              placement="top-right"
-              :max="99"
-            />
-          </template>
-        </UiButton>
         <SfDropdown v-if="isAuthorized" v-model="isAccountDropdownOpen" placement="bottom-end" class="z-50">
           <template #trigger>
             <UiButton
@@ -114,8 +45,7 @@
         </SfDropdown>
         <UiButton
           v-else
-          :style="{ color: iconColor }"
-          class="group relative hover:!bg-header-400 active:!bg-header-400 mr-1 -ml-0.5 rounded-md"
+          class="group relative active:bg-primary-500 hover:bg-primary-500 hover:text-white mr-1 -ml-0.5 rounded-md"
           variant="tertiary"
           :aria-label="t('auth.login.openLoginForm')"
           square
@@ -123,31 +53,28 @@
         >
           <SfIconPerson />
         </UiButton>
+        <UiButton
+          class="group relative active:bg-primary-500 hover:bg-primary-500 hover:text-white mr-1 -ml-0.5 rounded-md"
+          :tag="NuxtLink"
+          :to="localePath(paths.cart)"
+          :aria-label="t('numberInCart', { count: cartItemsCount })"
+          square
+          variant="tertiary"
+        >
+          <template #prefix>
+            <SfIconShoppingCart />
+            <SfBadge
+              :content="cartItemsCount"
+              :style="{ backgroundColor: iconColor, outlineColor: headerBackgroundColor, color: headerBackgroundColor }"
+              class="outline group-hover:outline-primary-800 group-active:outline-primary-700 flex justify-center items-center text-xs min-w-[16px] min-h-[16px]"
+              data-testid="cart-badge"
+              placement="top-right"
+              :max="99"
+            />
+          </template>
+        </UiButton>
       </nav>
     </template>
-
-    <div v-if="viewport.isLessThan('lg')">
-      <UiButton
-        variant="tertiary"
-        class="relative text-white hover:text-white active:text-white hover:bg-header-400 active:bg-header-400 rounded-md md:hidden"
-        square
-        data-testid="open-languageselect-button"
-        :aria-label="t('languageSelector')"
-        :disabled="(showConfigurationDrawer && isEditing) || (showConfigurationDrawer && disableActions)"
-        @click="toggleLanguageSelect()"
-      >
-        <SfIconLanguage />
-      </UiButton>
-      <UiButton
-        variant="tertiary"
-        class="relative text-white hover:text-white active:text-white hover:bg-header-400 active:bg-header-400 rounded-md md:hidden"
-        square
-        :aria-label="t('openSearchModalButtonLabel')"
-        @click="searchModalOpen"
-      >
-        <SfIconSearch />
-      </UiButton>
-    </div>
   </MegaMenu>
   <LanguageSelector />
   <UiModal
