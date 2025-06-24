@@ -33,7 +33,7 @@
             </div>
           </a>
         </div>
-        <div class="social-item">
+        <div class="social-item test-push">
           <a href="" target="_blank">
             <div class="p-3">
               <span class="font-bold flex items-center justify-center"
